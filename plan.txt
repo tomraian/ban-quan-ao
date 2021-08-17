@@ -1,0 +1,23 @@
+======== SƠ QUÁT CHỨC NĂNG WEB BÁN QUẦN ÁO ========
+ĐĂNG KÝ, ĐĂNG NHẬP, TẠO THÊM TÀI KHOẢN, SỬA THÔNG TIN TÀI KHOẢN
+TẠO DANH MỤC SẢN PHẨM
+    + QUẦN, ÁO
+
+TẠO THƯƠNG HIỆU SẢN PHẨM
+    + YAME,VIETIEN 
+
+ĐĂNG,SỬA,XÓA SẢN PHẨM
+    + tên, hình ảnh, tên thương hiệu, tên danh mục, giá, mô tả
+
+
+
+    nếu giá giảm < 1000 (tức là không giảm)
+    => giá hiện tại
+    nếu giá giảm > 1000 (có giảm)
+    => giá giảm
+
+
+
+    kiểm tra nếu sản phẩm đó lớn hơn > 0 
+        => đã có sản phẩm trong giỏ hàng
+            kiểm tra(nếu size thêm vào == size đã có )
