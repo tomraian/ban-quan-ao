@@ -15,6 +15,7 @@
     <i class="fas fa-angle-up"></i>
 </a>
 <!-- Bootstrap core JavaScript-->
+
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
@@ -26,7 +27,6 @@
 
 <!-- Page level custom scripts -->
 <script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
 <!-- Core plugin JavaScript-->
 <!-- Page level plugins -->
 <script src="vendor/datatables/jquery.dataTables.min.js"></script>
@@ -35,7 +35,6 @@
 <script src="js/demo/datatables-demo.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
 </body>
 
 </html>

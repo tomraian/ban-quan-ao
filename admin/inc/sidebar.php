@@ -2,11 +2,12 @@
  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
      <!-- Sidebar - Brand -->
-     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-         <div class="sidebar-brand-icon rotate-n-15">
-             <i class="fas fa-laugh-wink"></i>
+     <a class="sidebar-store d-flex align-items-center justify-content-center" href="index.php">
+         <div class="sidebar-store-icon rotate-n-15">
          </div>
-         <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+         <div class="sidebar-store-text mx-3">
+             <img src=".././admin/img/logo.png" alt="" style="margin-top: 20px;">
+         </div>
      </a>
 
      <!-- Divider -->
@@ -32,12 +33,12 @@
          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
              aria-controls="collapseTwo">
              <i class="fas fa-fw fa-cog"></i>
-             <span>Thương hiệu sản phẩm</span>
+             <span>Cửa hàng</span>
          </a>
          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="./list-brand.php">Danh sách thương hiệu</a>
-                 <a class="collapse-item" href="./add-brand.php">Thêm thương hiệu</a>
+                 <a class="collapse-item" href="./list-store.php">Danh sách cửa hàng</a>
+                 <a class="collapse-item" href="./add-store.php">Thêm cửa hàng</a>
              </div>
          </div>
      </li>
@@ -99,26 +100,42 @@
          </a>
          <div id="order" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="./unprocessed-order.php">Đơn hàng chưa xử lý</a>
+                 <a class="collapse-item" href="./order-unprocessed.php">Đơn hàng chưa xử lý</a>
                  <a class="collapse-item" href="./order-processed.php">Đơn hàng đã xử lý</a>
+                 <a class="collapse-item" href="./order-cancel.php">Đơn hàng đã hủy</a>
+             </div>
+         </div>
+     </li>
+     <li class="nav-item">
+         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user" aria-expanded="true"
+             aria-controls="user">
+             <i class="fas fa-fw fa-folder"></i>
+             <span>Tài khoản</span>
+         </a>
+         <div id="user" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+             <div class="bg-white py-2 collapse-inner rounded">
+                 <a class="collapse-item" href="./list-user.php">Danh sách người dùng</a>
+                 <a class="collapse-item" href="./list-admin.php">Danh sách quản trị viên</a>
+                 <a class="collapse-item" href="./add-admin.php">Thêm quản trị viên</a>
+             </div>
+         </div>
+     </li>
+
+     <li class="nav-item">
+         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contact" aria-expanded="true"
+             aria-controls="contact">
+             <i class="fas fa-fw fa-folder"></i>
+             <span>Liên hệ</span>
+         </a>
+         <div id="contact" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+             <div class="bg-white py-2 collapse-inner rounded">
+                 <a class="collapse-item" href="./list-contact.php">Danh sách liên hệ</a>
+                 <a class="collapse-item" href="./hide-contact.php">Liên hệ đã ẩn</a>
              </div>
          </div>
      </li>
 
      <!-- Nav Item - Charts -->
-     <li class="nav-item">
-         <a class="nav-link" href="charts.php">
-             <i class="fas fa-fw fa-chart-area"></i>
-             <span>Charts</span></a>
-     </li>
-
-     <!-- Nav Item - Tables -->
-     <li class="nav-item">
-         <a class="nav-link" href="tables.php">
-             <i class="fas fa-fw fa-table"></i>
-             <span>Tables</span></a>
-     </li>
-
      <!-- Divider -->
      <hr class="sidebar-divider d-none d-md-block">
 

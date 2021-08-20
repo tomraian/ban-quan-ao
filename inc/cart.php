@@ -32,6 +32,7 @@
             echo '<p class="success-message">Cập nhật giỏ hàng thành công</p>';
         }
         else{
+            echo "error";
         }
     }
     else if(isset($_GET['xoa'])){
@@ -68,26 +69,15 @@
         $result = mysqli_query($connect, $query);
         if($result){
             echo '<script>alert("Thêm vào giỏ hàng thành công")</script>';
-            echo '<script>window.location = "index.php" </script>';
+            echo "<script>window.location = '$beforeUrl' </script>";
         }
     }
 ?>
 
 <!--breadcrumbs area start-->
-<div class="breadcrumbs_area">
-    <div class="row">
-        <div class="col-12">
-            <div class="breadcrumb_content">
-                <ul>
-                    <li><a href="index.php">Trang chủ</a></li>
-                    <li><i class="fa fa-angle-right"></i></li>
-                    <li> Giỏ hàng</li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-</div>
+<?php 
+    include 'breadcrumbs.php';
+?>
 <!--breadcrumbs area end-->
 <!--shopping cart area start -->
 <div class="shopping_cart_area">
@@ -159,7 +149,6 @@
                                             name="cartOrderAmount[]" class="text-center">
                                         <input value="<?php echo $cart['productId'] ?>" type="hidden"
                                             name="productId[]">
-
                                     </td>
                                     <td class="product_total">
                                         <?php
@@ -181,10 +170,18 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="cart_submit">
-                        <button type="submit" name="update">Cập nhật giỏ hàng</button>
-                        <a href="?giohang&xoa-gio-hang" class="btn btn-danger delete">Xóa hết giỏ hàng</a>
-                    </div>
+                    <?php
+                        if($total == 0){
+                            echo '<center><h4>Giỏ hàng trống</h4></center>';
+                        }
+                        else{
+                            echo '<div class="cart_submit">
+                            <button type="submit" name="update">Cập nhật giỏ hàng</button>
+                            <a href="?giohang&xoa-gio-hang" class="btn btn-danger delete">Xóa hết giỏ hàng</a>
+                        </div>';
+                        }
+                    ?>
+
                 </form>
             </div>
         </div>

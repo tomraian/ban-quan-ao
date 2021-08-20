@@ -1,6 +1,6 @@
 ﻿<?php
-    if(isset($_GET['danhmuc'])){
-        $danhmuc = $_GET['danhmuc'];
+    if(isset($_GET['tim-kiem'])){
+        $search = $_GET['tim-kiem'];
     }
 ?>
 <?php 
@@ -17,7 +17,7 @@
     $from = ($page - 1) * $productPerPage;
     $limit = "LIMIT $from , $productPerPage";
     // lấy ra tổng số sản phẩm 
-    $totalProduct = mysqli_num_rows(mysqli_query($connect,"SELECT * FROM tbl_category,tbl_product WHERE tbl_category.categoryId = tbl_product.categoryId AND tbl_category.categoryId ='$danhmuc'"));
+    $totalProduct = mysqli_num_rows(mysqli_query($connect,"SELECT * FROM tbl_product WHERE productName LIKE '%$search%'"));
     // lấy ra tổng số trang làm tròn bằng cách lấy tổng sản phẩm / tổng sản phẩm 1 trang 
     $totalPage = ceil($totalProduct / 12);
 ?>
@@ -58,7 +58,7 @@
                     <div class="tab-pane fade show active" id="large" role="tabpanel">
                         <div class="row">
                             <?php
-                                $query = "SELECT * FROM tbl_category,tbl_product WHERE tbl_category.categoryId = tbl_product.categoryId AND tbl_category.categoryId ='$danhmuc' ORDER BY productId DESC $limit";
+                                $query = "SELECT * FROM tbl_product WHERE productName LIKE '%$search%' $limit";
                                 $result = mysqli_query($connect, $query);
                                 if(mysqli_num_rows($result) > 0)
                                 {
@@ -120,7 +120,7 @@
                     </div>
                     <div class="tab-pane fade" id="list" role="tabpanel">
                         <?php
-                            $query = "SELECT * FROM tbl_category,tbl_product WHERE tbl_category.categoryId = tbl_product.categoryId AND tbl_category.categoryId ='$danhmuc' ORDER BY productId DESC $limit";
+                            $query = "SELECT * FROM tbl_product WHERE productName LIKE '%$search%'";
                             $result = mysqli_query($connect, $query);
                             if(mysqli_num_rows($result) > 0)
                             {
@@ -135,6 +135,8 @@
                                         <a
                                             href="?sanpham=<?php echo $product['productId'] ?>/<?php echo $product['productLink'] ?>"><img
                                                 src="./uploads/<?php echo $product['productImage'] ?>" alt=""></a>
+                                        <div class="hot_img">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-md-6 col-sm-6">
@@ -197,7 +199,7 @@
                             <?php   
                                 if(isset($_GET['page']) && $_GET['page'] > 1){
                                     $prevPage = $_GET['page'] - 1;
-                                    echo "<a href='?danhmuc=$danhmuc&page=$prevPage'>«</a>";
+                                    echo "<a href='?tim-kiem&page=$prevPage'>«</a>";
                                 }
                                 else{
                                     echo '«';
@@ -209,10 +211,10 @@
                             for($i = 1 ; $i <= $totalPage; $i++){
                                 if($page == $i){
                                     $current_number = 'current_number';
-                                    echo "<li class= '$current_number' > <a href='?danhmuc=$danhmuc&page=$i'>$i</a> </li>";
+                                    echo "<li class= '$current_number' > <a href='?tim-kiem&page=$i'>$i</a> </li>";
                                 }
                                 else{
-                                    echo "<li class= '' > <a href='?danhmuc=$danhmuc&page=$i'>$i</a> </li>";
+                                    echo "<li class= '' > <a href='?tim-kiem&page=$i'>$i</a> </li>";
                                 }
                             }
                         ?>
@@ -220,7 +222,7 @@
                             <?php   
                                 if(isset($_GET['page']) && $_GET['page'] < $totalPage){
                                     $nextPage = $_GET['page'] + 1;
-                                    echo "<a href='?danhmuc=$danhmuc&page=$nextPage'>»</a>";
+                                    echo "<a href='?tim-kiem&page=$nextPage'>»</a>";
                                 }
                                 else{
                                     echo '»';

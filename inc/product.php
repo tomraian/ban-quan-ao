@@ -4,20 +4,9 @@
     }
 ?>
 <!--breadcrumbs area start-->
-<div class="breadcrumbs_area">
-    <div class="row">
-        <div class="col-12">
-            <div class="breadcrumb_content">
-                <ul>
-                    <li><a href="index.php">home</a></li>
-                    <li><i class="fa fa-angle-right"></i></li>
-                    <li>single product</li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-</div>
+<?php 
+    include 'breadcrumbs.php';
+?>
 <!--breadcrumbs area end-->
 
 
@@ -113,7 +102,7 @@
                                     <input type="hidden" name="productId" value="<?php echo $product['productId'] ?>">
                                     <?php 
                                         if($product['productAmount'] > 0) {
-                                            echo '<button type="submit" name="add"><i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng</button>';
+                                            echo '<button type="submit" name="add"><i class="fa fa-shopping-cart"></i> Mua ngay</button>';
                                         }
                                     ?>
                                 </div>

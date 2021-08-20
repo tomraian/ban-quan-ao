@@ -3,7 +3,35 @@
     include './inc/header.php';
 ?>
 <?php
-    
+if(isset($_GET['shipped'])){
+    $orderCode = $_GET['shipped'];
+    $result = mysqli_query($connect,"UPDATE tbl_order SET orderStatus = 'shipped' WHERE orderCode = '$orderCode' ");
+    if(isset($result)){
+        echo "<script>window.location = 'order-details.php?code=$orderCode'</script>";
+    }
+}
+else if(isset($_GET['delivered'])){
+    $orderCode = $_GET['delivered'];
+    $result = mysqli_query($connect,"UPDATE tbl_order SET orderStatus = 'delivered' WHERE orderCode = '$orderCode' ");
+    if(isset($result)){
+                echo "<script>window.location = 'order-details.php?code=$orderCode'</script>";
+
+    }
+}
+else if(isset($_GET['hide'])){
+    $orderCode = $_GET['hide'];
+    $result = mysqli_query($connect,"UPDATE tbl_order SET orderStatus = 'hide' WHERE orderCode = '$orderCode' ");
+    if(isset($result)){
+            echo "<script>window.location = 'order-processed.php'</script>";
+    }
+}
+else if(isset($_GET['cancel'])){
+    $orderCode = $_GET['cancel'];
+    $result = mysqli_query($connect,"UPDATE tbl_order SET orderStatus = 'cancel' WHERE orderCode = '$orderCode' ");
+    if(isset($result)){
+        echo "<script>window.location = 'order-cancel.php'</script>";
+    }
+}
 ?>
 
 <body id="page-top">
@@ -44,6 +72,7 @@
                                         <th>Thời gian đặt</th>
                                         <th>Thanh toán</th>
                                         <th>Lưu ý</th>
+                                        <th>Xử lý đơn</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,7 +91,6 @@
                                             $result = mysqli_query($connect, $query);
                                             if(mysqli_num_rows($result) > 0)
                                             {
-
                                             while($order = mysqli_fetch_array($result))
                                             {
                                     ?>
@@ -77,11 +105,31 @@
                                         <td>
                                             <?php echo $order['customerNote'];; ?>
                                         </td>
+                                        <td>
+
+                                            <?php
+                                                $orderCode = $order['orderCode'];
+                                                if($order['orderStatus'] == 'received')
+                                                {
+                                                    echo "<a href='?shipped=$orderCode' class='action-btn warn mb-10' title='Nhấn để thay đổi trạng thái đơn hàng'>Tiếp nhận</a>";
+                                                }
+                                                else if($order['orderStatus'] == 'shipped'){
+                                                    echo "<a href='?delivered=$orderCode' class='action-btn edit mb-10' title='Nhấn để thay đổi trạng thái đơn hàng' >Đang giao</a>";
+                                                }
+                                                else if($order['orderStatus'] == 'delivered'){
+                                                    echo "<a href='?hide=$orderCode' class='action-btn hide mb-10' title='Nhấn để ẩn đơn hàng đã hoàn thành'>Đã giao</a>";
+                                                }
+                                                ?>
+                                            <?php 
+                                                    if($order['orderStatus'] != 'hide'){
+                                                        echo "<a href='?cancel=$orderCode' class='action-btn remove'>Hủy đơn</a>";
+                                            }
+                                            ?>
+                                        </td>
                                         <?php
                                           }
                                         }
                                     }
-
                                     ?>
                                 </tbody>
                             </table>
@@ -156,15 +204,19 @@
                                     <?php
                                           }
                                         }
-                                        
+                                        else{
+                                            $total = -30000;
+                                        }
                                     }
                                     ?>
 
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="100">Tổng thu: <?php  
-                                            echo $maxTotal = number_format($total + 30000, 0, "", ",")." VNĐ" ;
+                                        <td colspan="100">Tổng thu:
+                                            <?php  
+                                                    $maxTotal = number_format($total + 30000, 0, "", ",")." VNĐ" ;
+                                                    echo $maxTotal;
                                             ?> </td>
                                     </tr>
                                 </tfoot>

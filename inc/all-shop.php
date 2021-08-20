@@ -1,17 +1,25 @@
-﻿<!--breadcrumbs area start-->
-<div class="breadcrumbs_area">
-    <div class="row">
-        <div class="col-12">
-            <div class="breadcrumb_content">
-                <ul>
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><i class="fa fa-angle-right"></i></li>
-                    <li>Tất cả sản phẩm</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+﻿<?php 
+    $page = 1;
+    // pagination
+    // đặt 1 biến page = 1 
+    // lấy giá trị trang bằng $get sau đó gán lại cho biến page 
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }
+    // số sản phẩm 1 trang 
+    $productPerPage = 12;
+    // lấy giá trị limit bằng lấy trang hiện tại - 1 * số sản phẩm 
+    $from = ($page - 1) * $productPerPage;
+    $limit = "LIMIT $from , $productPerPage";
+    // lấy ra tổng số sản phẩm 
+    $totalProduct = mysqli_num_rows(mysqli_query($connect,"SELECT * FROM tbl_product"));
+    // lấy ra tổng số trang làm tròn bằng cách lấy tổng sản phẩm / tổng sản phẩm 1 trang 
+    $totalPage = ceil($totalProduct / 12);
+?>
+<!--breadcrumbs area start-->
+<?php 
+    include 'breadcrumbs.php';
+?>
 <!--breadcrumbs area end-->
 
 <!--pos home section-->
@@ -46,7 +54,8 @@
                     <div class="tab-pane fade show active" id="large" role="tabpanel">
                         <div class="row">
                             <?php
-                                $query = "SELECT * FROM tbl_product WHERE productStatus = 1 ORDER BY productId DESC";
+                                // gán limit bằng giá trị đã lấy 
+                                $query = "SELECT * FROM tbl_product WHERE productStatus = 1 ORDER BY productId DESC $limit";
                                 $result = mysqli_query($connect, $query);
                                 if(mysqli_num_rows($result) > 0)
                                 {
@@ -60,11 +69,10 @@
                                         <a
                                             href="?sanpham=<?php echo $product['productId'] ?>/<?php echo $product['productLink'] ?>"><img
                                                 src="./uploads/<?php echo $product['productImage']?>" alt=""></a>
-                                        <div class="img_icone">
-                                            <img src="assets\img\cart\span-new.png" alt="">
-                                        </div>
                                         <div class="product_action">
-                                            <a href="#"> <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                            <a
+                                                href="?giohang&Id=<?php echo $product['productId'] ?>/<?php echo $product['productLink']?>">
+                                                <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
                                         </div>
                                     </div>
                                     <div class="product_content text-center">
@@ -110,7 +118,7 @@
                     <!-- tab 1 sản phẩm -->
                     <div class="tab-pane fade" id="list" role="tabpanel">
                         <?php
-                            $query = "SELECT * FROM tbl_product WHERE productStatus = 1 ORDER BY productId DESC";
+                            $query = "SELECT * FROM tbl_product WHERE productStatus = 1 ORDER BY productId DESC $limit";
                             $result = mysqli_query($connect, $query);
                             if(mysqli_num_rows($result) > 0)
                             {
@@ -126,9 +134,6 @@
                                         <a
                                             href="?sanpham=<?php echo $product['productId'] ?>/<?php echo $product['productLink'] ?>"><img
                                                 src="./uploads/<?php echo $product['productImage'] ?>" alt=""></a>
-                                        <div class="hot_img">
-                                            <img src="assets\img\cart\span-hot.png" alt="">
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- thông tin  -->
@@ -188,10 +193,40 @@
                 <div class="page_number">
                     <span>Trang: </span>
                     <ul>
-                        <li>«</li>
-                        <li class="current_number">1</li>
-                        <li><a href="#">2</a></li>
-                        <li>»</li>
+                        <li class="">
+                            <?php   
+                                if(isset($_GET['page']) && $_GET['page'] > 1){
+                                    $prevPage = $_GET['page'] - 1;
+                                    echo "<a href='?tat-ca-san-pham&page=$prevPage'>«</a>";
+                                }
+                                else{
+                                    echo '«';
+                                }
+                            ?>
+                        </li>
+                        <?php
+                            // chạy vòng lặp biến cho biến $i nhỏ hơn tổng trang 
+                            for($i = 1 ; $i <= $totalPage; $i++){
+                                if($page == $i){
+                                    $current_number = 'current_number';
+                                    echo "<li class= '$current_number' > <a href='?tat-ca-san-pham&page=$i'>$i</a> </li>";
+                                }
+                                else{
+                                    echo "<li class= '' > <a href='?tat-ca-san-pham&page=$i'>$i</a> </li>";
+                                }
+                            }
+                        ?>
+                        <li class="">
+                            <?php   
+                                if(isset($_GET['page']) && $_GET['page'] < $totalPage){
+                                    $nextPage = $_GET['page'] + 1;
+                                    echo "<a href='?tat-ca-san-pham&page=$nextPage'>»</a>";
+                                }
+                                else{
+                                    echo '»';
+                                }
+                            ?>
+                        </li>
                     </ul>
                 </div>
             </div>

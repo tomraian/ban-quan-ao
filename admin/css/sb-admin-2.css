@@ -11303,6 +11303,10 @@ body.sidebar-toggled footer.sticky-footer {
   padding:10px 5px;
   color: var(--white);
 }
+.action-btn:hover{
+  text-decoration: none;
+  color: var(--white);
+}
 .action-btn.edit{
   background-color: #3b8cbf;
 }
@@ -11311,6 +11315,9 @@ body.sidebar-toggled footer.sticky-footer {
 }
 .action-btn.remove{
   background-color: #ea4335;
+}
+.action-btn.warn{
+  background-color: #ec971f;
 }
 .form-group label{
   display: block;
