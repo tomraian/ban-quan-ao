@@ -29,7 +29,7 @@
     </div>
 
     <!--newsletter block start-->
-    <div class="sidebar_widget newsletter mb-30">
+    <!-- <div class="sidebar_widget newsletter mb-30">
         <div class="block_title">
             <h3>Đăng ký nhận tin</h3>
         </div>
@@ -38,7 +38,7 @@
             <input placeholder="Địa chỉ email của bạn" type="email">
             <button type="submit">Đăng ký</button>
         </form>
-    </div>
+    </div> -->
     <!--newsletter block end-->
 
     <!--special product start-->

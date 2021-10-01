@@ -9,14 +9,18 @@
         </div>
         <div class="col-lg-6 col-md-6">
             <div class="about_content">
-                <h1>WE CREATE <br>WORDPRESS THEMES</h1>
-                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-                    dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
-                    praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum
-                    soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim
-                    assum. Typi non habent claritatem insitam, est usus legentis in iis qui facit eorum claritatem. </p>
+                <h1>Chúng tôi <br> tạo nên xu hướng</h1>
+                <p>Cái tên Pos Coron được tạo ra rất ngẫu hứng, xuất phát từ “Chuỗi ngày u buồn về sự nghiệp, tương lai
+                    trong quá khứ của chính mình” – theo lời chia sẻ của Pos Coron’s founder. Là một local brand mang
+                    khuynh hướng Á Đông, kết hợp giữa hai yếu tố truyền thống và hiện đại, Pos Coron luôn cố gắng mang
+                    đến
+                    những thông điệp văn hoá ý nghĩa qua từng đường nét thiết kế. Tiếp theo đó sự sang trọng, thanh lịch
+                    cũng là những yếu tố tạo nên một Pos Coron đầy sức hút, sự lựa chọn hoàn hảo dành cho các bạn trẻ
+                    yêu
+                    thích phong cách hoài cổ nhưng vẫn muốn thoát xác trong những bộ cánh mới mẻ hơn.
+                </p>
                 <div class="view__work">
-                    <a href="#">view work </a>
+                    <a href="?lien-he">Liên hệ với chúng tôi</a>
                 </div>
             </div>
         </div>

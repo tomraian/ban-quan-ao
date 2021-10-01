@@ -1,6 +1,6 @@
 ﻿<?php
 if(!isset($_SESSION['dangnhap'])){
-    echo '<script>window.location = "index.php" </script>';
+    echo '<script>window.location = "index.php?tai-khoan" </script>';
 }
 if(isset($_SESSION['dangnhap'])){
     $userId = $_SESSION['dangnhap'];
@@ -87,7 +87,7 @@ if(isset($_SESSION['dangnhap'])){
                         <h3>Trang chủ </h3>
                         <p>Từ trang tổng quan tài khoản của bạn. Bạn có thể dễ dàng kiểm tra
                             &amp; xem <a href="#">đơn đặt hàng
-                                gần đây</a>, quản lý <a href="">địa chỉ giao hàng của bạn</a> and <a href="#">Chỉnh sửa
+                                gần đây</a>, quản lý <a href="">địa chỉ giao hàng của bạn</a> và <a href="#">Chỉnh sửa
                                 mật
                                 khẩu và chi tiết tài khoản của bạn
                                 .</a></p>
