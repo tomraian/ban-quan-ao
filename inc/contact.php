@@ -24,10 +24,13 @@
             echo '<p class="error-message">Nội dung không được để trống</p>';
         }
         else {
-            $query = "INSERT INTO tbl_contact (contactName,contactEmail,contactHeading,contactPhone,contactMessage) VALUES('$contactName','$contactEmail','$contactHeading','$contactPhone','$contactMessage')";
+            $query = "INSERT INTO tbl_contact (contactName,contactEmail,contactHeading,contactPhone,contactMessage,contactStatus) VALUES('$contactName','$contactEmail','$contactHeading','$contactPhone','$contactMessage',0)";
             $result = mysqli_query($connect,$query);
             if($result){
-                echo '<p class="success-message">Thêm thành công</p>';
+                echo '<p class="success-message">Gửi thành công</p>';
+            }
+            else{
+                echo '<p class="error-message">Xảy ra lỗi,vui lòng gửi lại</p>';
             }
         }
         

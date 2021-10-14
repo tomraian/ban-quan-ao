@@ -49,7 +49,6 @@
 <!--pos home section-->
 <?php
     if(isset($_GET['tat-ca-san-pham'])){
-        $title = "Tất cả sản phẩm";
         include './inc/all-shop.php';
     }
     else if(isset($_GET['danhmuc'])){

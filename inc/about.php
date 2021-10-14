@@ -9,6 +9,7 @@
         </div>
         <div class="col-lg-6 col-md-6">
             <div class="about_content">
+<<<<<<< HEAD
                 <h1>WE CREATE <br>TRENDING</h1>
                 <p>Cái tên Poscoron được tạo ra rất ngẫu hứng, xuất phát từ “Chuỗi ngày u buồn về sự nghiệp, tương lai trong quá khứ của chính mình” – theo lời chia sẻ của Poscoron’s founder. Là một local brand mang khuynh hướng Á Đông, kết hợp giữa hai yếu tố truyền thống và hiện đại, Poscoron luôn cố gắng mang đến những thông điệp văn hoá ý nghĩa qua từng đường nét thiết kế. Tiếp theo đó sự sang trọng, thanh lịch cũng là những yếu tố tạo nên một Poscoron đầy sức hút, sự lựa chọn hoàn hảo dành cho các bạn trẻ yêu thích phong cách hoài cổ nhưng vẫn muốn thoát xác trong những bộ cánh mới mẻ hơn.
 
@@ -18,6 +19,21 @@
 
         Poscoron xin gửi lời cảm ơn đến tất cả những khách hàng đã, đang và sẽ ủng hộ Poscoron cũng như team thời gian qua và sắp tới. Cảm ơn rất nhiều !</p>
                
+=======
+                <h1>Chúng tôi <br> tạo nên xu hướng</h1>
+                <p>Cái tên Pos Coron được tạo ra rất ngẫu hứng, xuất phát từ “Chuỗi ngày u buồn về sự nghiệp, tương lai
+                    trong quá khứ của chính mình” – theo lời chia sẻ của Pos Coron’s founder. Là một local brand mang
+                    khuynh hướng Á Đông, kết hợp giữa hai yếu tố truyền thống và hiện đại, Pos Coron luôn cố gắng mang
+                    đến
+                    những thông điệp văn hoá ý nghĩa qua từng đường nét thiết kế. Tiếp theo đó sự sang trọng, thanh lịch
+                    cũng là những yếu tố tạo nên một Pos Coron đầy sức hút, sự lựa chọn hoàn hảo dành cho các bạn trẻ
+                    yêu
+                    thích phong cách hoài cổ nhưng vẫn muốn thoát xác trong những bộ cánh mới mẻ hơn.
+                </p>
+                <div class="view__work">
+                    <a href="?lien-he">Liên hệ với chúng tôi</a>
+                </div>
+>>>>>>> fc6abb1a6cac42f89a876bf04e961f6ed80bdbaa
             </div>
         </div>
     </div>

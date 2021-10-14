@@ -36,9 +36,6 @@
                             <div class="tab-pane fade show active" id="p_tab1" role="tabpanel">
                                 <div class="modal_img">
                                     <a href="#"><img src="./uploads/<?php echo $product['productImage'] ?>" alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="assets\img\cart\span-new.png" alt="">
-                                    </div>
                                     <div class="view_img">
                                         <a class="large_view" href="./uploads/<?php echo $product['productImage'] ?>"><i
                                                 class="fa fa-search-plus"></i></a>
@@ -282,9 +279,6 @@
                                     <a
                                         href="?sanpham=<?php echo $product['productId'] ?>/<?php echo $product['productLink'] ?>"><img
                                             src="./uploads/<?php echo $product['productImage']?>" alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="assets\img\cart\span-new.png" alt="">
-                                    </div>
                                     <div class="product_action">
                                         <a href="?giohang"> <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
                                     </div>
