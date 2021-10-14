@@ -214,7 +214,7 @@
                                     echo "<li class= '$current_number' > <a href='?tim-kiem&page=$i'>$i</a> </li>";
                                 }
                                 else{
-                                    echo "<li class= '' > <a href='?tim-kiem&page=$i'>$i</a> </li>";
+                                    echo "<li class= '' > <a href='?tim-kiem=$search&page=$i'>$i</a> </li>";
                                 }
                             }
                         ?>
@@ -222,7 +222,7 @@
                             <?php   
                                 if(isset($_GET['page']) && $_GET['page'] < $totalPage){
                                     $nextPage = $_GET['page'] + 1;
-                                    echo "<a href='?tim-kiem&page=$nextPage'>»</a>";
+                                    echo "<a href='?tim-kiem=$search&page=$nextPage'>»</a>";
                                 }
                                 else{
                                     echo '»';
