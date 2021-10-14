@@ -2,53 +2,38 @@
     <div class="footer_top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="footer_widget">
-                        <h3>About us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.</p>
+                        <h3>Giới thiệu</h3>
+                        <p>Cái tên Poscoron được tạo ra rất ngẫu hứng, xuất phát từ “Chuỗi ngày u buồn về sự nghiệp, tương lai trong quá khứ của chính mình” – theo lời chia sẻ của Poscoron’s founder.</p>
                         <div class="footer_widget_contect">
-                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> 19 Interpro Road Madison, AL 35758,
-                                USA</p>
-
-                            <p><i class="fa fa-mobile" aria-hidden="true"></i> (012) 234 432 3568</p>
-                            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contact@plazathemes.com </a>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i>  Đường Lê Lợi, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh
+</p>
+                            <p><i class="fa fa-mobile" aria-hidden="true"></i> 0394448743</p>
+                            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>poscoron@gmail.com
+ </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="footer_widget">
-                        <h3>My Account</h3>
+                        <h3>Tài khoản</h3>
                         <ul>
-                            <li><a href="#">Your Account</a></li>
-                            <li><a href="#">My orders</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">My addresses</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="?cai-dat-tai-khoan">Tài khoản cuả bạn</a></li>
+                            <li><a href="?cai-dat-tai-khoan">Đơn hàng của bạn</a></li>
+                            <li><a href="?cai-dat-tai-khoan">Địa chỉ đặt hàng</a></li>
+                            <li><a href="?tai-khoan">Đăng nhập</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="footer_widget">
-                        <h3>Informations</h3>
+                        <h3>Thông tin</h3>
                         <ul>
-                            <li><a href="#">Specials</a></li>
-                            <li><a href="#">Our store(s)!</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">Terms and conditions</a></li>
-                            <li><a href="#">About us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer_widget">
-                        <h3>extras</h3>
-                        <ul>
-                            <li><a href="#"> Brands</a></li>
-                            <li><a href="#"> Gift Vouchers </a></li>
-                            <li><a href="#"> Affiliates </a></li>
-                            <li><a href="#"> Specials </a></li>
-                            <li><a href="#"> Privacy policy </a></li>
+                            <li><a href="?he-thong-cua-hang">Hệ thống cửa hàng</a></li>
+                            <li><a href="?tat-ca-san-pham">Sản phẩm</a></li>
+                            <li><a href="?lien-he">Liên hệ</a></li>
+                            <li><a href="?gioi-thieu">Giới thiệu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -60,12 +45,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright_area">
-                        <ul>
-                            <li><a href="#"> about us </a></li>
-                            <li><a href="#"> Customer Service </a></li>
-                            <li><a href="#"> Privacy Policy </a></li>
-                        </ul>
-                        <p>Copyright &copy; 2018 <a href="#">Pos Coron</a>. All rights reserved. </p>
+                        <p>Copyright &copy; 2016 <a href="#">Pos Coron</a>.  </p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

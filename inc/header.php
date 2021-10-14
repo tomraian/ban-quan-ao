@@ -73,7 +73,7 @@ else if(isset($_GET['xoa'])){
                                 <div class="header_links">
                                     <ul>
                                         <li><a href="?lien-he" title="Contact">Liên hệ</a></li>
-                                        <li><a href="?cai-dat-tai-khoan" title="My account">Tài khoản</a></li>
+                                        <li><a href="?cai-dat-tai-khoan" title="My account">Cài đặt tài khoản</a></li>
                                         <li><a href="?giohang" title="My cart">Giỏ hàng</a></li>
                                         <li><a href="?kiem-tra-don-hang" title="My cart">Kiểm tra đơn hàng</a></li>
                                         <?php 

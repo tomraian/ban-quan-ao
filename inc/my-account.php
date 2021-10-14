@@ -1,6 +1,6 @@
 ﻿<?php
 if(!isset($_SESSION['dangnhap'])){
-    echo '<script>window.location = "index.php" </script>';
+    echo '<script>window.location = "index.php?tai-khoan" </script>';
 }
 if(isset($_SESSION['dangnhap'])){
     $userId = $_SESSION['dangnhap'];
