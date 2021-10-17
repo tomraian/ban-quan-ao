@@ -1,6 +1,4 @@
 ﻿<?php
-
-    
     if(isset($_POST['thanhtoan'])){
         $customerName = $_POST['customerName'];
         $customerPhone = $_POST['customerPhone'];
@@ -105,54 +103,41 @@
                 <div class="col-lg-6 col-md-6">
                     <h3>Địa chỉ giao hàng</h3>
                     <div class="row">
-                        <?php
-                            if(isset($_SESSION['dangnhap']))
-                            {
-                                $userId = $_SESSION['dangnhap'];
-                                $query = "SELECT * FROM tbl_user WHERE userId = '$userId' LIMIT 1";
-                                $result = mysqli_query($connect,$query);
-                            }
-                            if(mysqli_num_rows($result) == 1){
-                                while($user = mysqli_fetch_array($result)){
-                            ?>
                         <div class="col-lg-12 mb-30">
                             <label>Họ và tên<span>*</span></label>
-                            <input type="text" name="customerName" placeholder="Tên của bạn" required value="<?php 
-                                        if(isset($_SESSION['dangnhap']) && isset($user['userName'])){
-                                            echo $user['userName'] ;
-                                        }
-                                        else{
-                                            echo "";
-                                        }
-                                        ?>">
+                            <input type="text" name="customerName" placeholder="Tên của bạn" required value="<?php
+                                    if(isset($_SESSION['dangnhap'])){
+                                        echo $_SESSION['userName'];
+                                    }
+                                ?>">
                         </div>
                         <div class="col-12 mb-30">
                             <label>Địa chỉ email</label>
                             <input type="email" required
                                 placeholder="Địa chỉ email để nhận email xác nhận thông tin đơn hàng"
-                                name="customerEmail" value="<?php 
-                                        if(isset($_SESSION['dangnhap']) && isset($user['userEmail'])){
-                                        echo $user['userEmail'] ;
-                                        }
-                                        ?>">
+                                name="customerEmail" value="<?php
+                                    if(isset($_SESSION['dangnhap'])){
+                                        echo $_SESSION['userEmail'];
+                                    }
+                                ?>">
                         </div>
                         <div class="col-12 mb-30">
                             <label>Số điện thoại</label>
                             <input type="number" class="input-arrow-remove" placeholder="Số điện thoại liên hệ"
-                                name="customerPhone" required value="<?php 
-                                        if(isset($_SESSION['dangnhap']) && isset($user['userPhone'])){
-                                        echo $user['userPhone'] ;
-                                        }
-                                        ?>">
+                                name="customerPhone" required value="<?php
+                                    if(isset($_SESSION['dangnhap'])){
+                                        echo $_SESSION['userPhone'];
+                                    }
+                                ?>">
                         </div>
                         <div class="col-12 mb-30">
                             <label>Địa chỉ giao hàng<span>*</span></label>
                             <input type="text" placeholder="Số nhà,quận/huyện,thành phố" name="customerAddress" required
-                                value="<?php 
-                                        if(isset($_SESSION['dangnhap']) && isset($user['userAddress'])){
-                                            echo $user['userAddress'] ;
-                                        }
-                                        ?>">
+                                value="<?php
+                                    if(isset($_SESSION['dangnhap'])){
+                                        echo $_SESSION['userAddress'];
+                                    }
+                                ?>">
                         </div>
                         <div class="col-12">
                             <div class="order-notes">
@@ -161,39 +146,6 @@
                                     placeholder="Lưu ý về đơn hàng của bạn hoặc về giao hàng"></textarea>
                             </div>
                         </div>
-                        <?php
-                                    }
-                            }
-                            else{
-                                echo '<div class="col-lg-12 mb-30">
-                                <label>Họ và tên<span>*</span></label>
-                                <input type="text" name="customerName" placeholder="Tên của bạn" required>
-                            </div>
-                            <div class="col-12 mb-30">
-                                <label>Địa chỉ email</label>
-                                <input type="email" required
-                                    placeholder="Địa chỉ email để nhận email xác nhận thông tin đơn hàng"
-                                    name="customerEmail" value="">
-                            </div>
-                            <div class="col-12 mb-30">
-                                <label>Số điện thoại</label>
-                                <input type="number" class="input-arrow-remove" placeholder="Số điện thoại liên hệ"
-                                    name="customerPhone" required value="">
-                            </div>
-                            <div class="col-12 mb-30">
-                                <label>Địa chỉ giao hàng<span>*</span></label>
-                                <input type="text" placeholder="Số nhà,quận/huyện,thành phố" name="customerAddress" required
-                                    value="">
-                            </div>
-                            <div class="col-12">
-                                <div class="order-notes">
-                                    <label for="order_note">Ghi chú</label>
-                                    <textarea id="order_note" rows="4" name="customerNote"
-                                        placeholder="Lưu ý về đơn hàng của bạn hoặc về giao hàng"></textarea>
-                                </div>
-                            </div>';
-                            }
-                        ?>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

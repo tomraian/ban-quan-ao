@@ -50,17 +50,33 @@
                 <h3>Kể cho chúng tôi về trải nghiệm của bạn</h3>
                 <form id="contact-form" method="POST" action="">
                     <div class="row">
+                        <?php
+                        // echo  $_SESSION['dangnhap'];
+                        // echo $_SESSION['userName'];
+                        ?>
                         <div class="col-lg-6">
-                            <input name="contactName" placeholder="Tên *" type="text">
+                            <input name="contactName" placeholder="Tên *" type="text" value="<?php
+                                    if(isset($_SESSION['dangnhap'])){
+                                        echo $_SESSION['userName'];
+                                    }
+                                ?>">
                         </div>
                         <div class="col-lg-6">
-                            <input name="contactEmail" placeholder="Email *" type="email">
+                            <input name="contactEmail" placeholder="Email *" type="email" value="<?php
+                                    if(isset($_SESSION['dangnhap'])){
+                                        echo $_SESSION['userEmail'];
+                                    }
+                                ?>">
                         </div>
                         <div class="col-lg-6">
                             <input name="contactHeading" placeholder="Vấn đề *" type="text">
                         </div>
                         <div class="col-lg-6">
-                            <input name="contactPhone" placeholder="Số điện thoại *" type="text">
+                            <input name="contactPhone" placeholder="Số điện thoại *" type="text" value="<?php
+                                    if(isset($_SESSION['dangnhap'])){
+                                        echo $_SESSION['userPhone'];
+                                    }
+                                ?>">
                         </div>
 
                         <div class="col-12">
