@@ -50,6 +50,7 @@ if(isset($_GET['delId'])){
                                         <th>STT</th>
                                         <th>Tên quản trị viên</th>
                                         <th>Email</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,7 +71,9 @@ if(isset($_GET['delId'])){
                                         </td>
                                         <td> <?php echo $admin["adminEmail"] ?>
                                         </td>
-
+                                        <td><a href="?delId=<?php echo $admin["adminId"]?>" class=" action-btn remove">
+                                                <i class="far fa-trash-alt"></i> Xóa
+                                            </a></td>
                                     </tr>
                                     <?php
                                           }

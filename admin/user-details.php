@@ -3,16 +3,8 @@
     include './inc/header.php';
 ?>
 <?php
-if(isset($_GET['userId'])){
-    $userId = $_GET['userId'];
-    $query = "SELECT * FROM tbl_user WHERE userId = '$userId'";
-    $result = mysqli_query($connect, $query);
-}
-if(!isset($_GET['userId'])){
-    echo '<script>window.location = "list-user.php" </script>';
-}
 // xóa người dùng
-else if(isset($_GET['delId'])){
+ if(isset($_GET['delId'])){
     $userId = $_GET['delId'];
     $queryDel = "DELETE FROM tbl_user WHERE userId = '$userId'";
     $resultDel = mysqli_query($connect, $queryDel);
@@ -68,6 +60,14 @@ else if(isset($_GET['delId'])){
                                 <tbody>
 
                                     <?php
+                                    if(!isset($_GET['userId'])){
+                                        echo '<script>window.location = "list-user.php" </script>';
+                                    }
+                                    if(isset($_GET['userId'])){
+                                        $userId = $_GET['userId'];
+                                        $query = "SELECT * FROM tbl_user WHERE userId = '$userId'";
+                                        $result = mysqli_query($connect, $query);
+                                    }
                                         if(mysqli_num_rows($result) > 0)
                                         {
                                             while($user = mysqli_fetch_array($result))
