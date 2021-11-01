@@ -115,6 +115,9 @@
                             <?php 
                                     }
                                 }
+                                else{
+                                    echo '<div class="col-xl-12 text-center">Chưa có sản phẩm</div>';
+                                }
                             ?>
                         </div>
                     </div>
@@ -180,6 +183,9 @@
                         </div>
                         <?php
                                 }
+                            }
+                            else{
+                                echo '<div class="col-xl-12 text-center">Chưa có sản phẩm</div>';
                             }
                         ?>
                     </div>

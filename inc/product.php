@@ -26,6 +26,7 @@
                         while($product = mysqli_fetch_array($result))
                         {
                             $categoryId = $product['categoryId'];
+                            // echo $product['productName'];
                             $old_price = number_format($product['productPrice'], 0, "", ",")." VNĐ";
                             $new_price = number_format($product['productDiscount'], 0, "", ",")." VNĐ";
                 ?>
@@ -144,8 +145,10 @@
                         $i = 0;
                         while($product = mysqli_fetch_array($result))
                         {
+                            $old_price = number_format($product['productPrice'], 0, "", ",")." VNĐ";
+                            $new_price = number_format($product['productDiscount'], 0, "", ",")." VNĐ";
                             $i++;
-                ?>
+                        ?>
                         <div class="col-lg-3">
                             <div class="single_product">
                                 <div class="product_thumb">

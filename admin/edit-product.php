@@ -93,6 +93,7 @@
                     }
                     
                 ?>
+
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -108,6 +109,11 @@
                                     if(mysqli_num_rows($resultProduct) > 0){
                                         while($product = mysqli_fetch_array($resultProduct)){
                                 ?>
+                                <div class="form-group">
+                                    <label>Xem sản phẩm</label>
+                                    <a
+                                        href="http://localhost/banquanao/?sanpham=<?php echo $productId?>/<?php echo $product['productLink'] ?>">http://localhost/banquanao/?sanpham=<?php echo $productId?>/<?php echo $product['productLink'] ?></a>
+                                </div>
                                 <div class="form-group">
                                     <label for="productFeatured">----------Sản phẩm nổi bật----------</label>
                                     <select name="productFeatured" id="productFeatured">

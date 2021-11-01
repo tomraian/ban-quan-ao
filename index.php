@@ -1,4 +1,7 @@
 ﻿<!--header start -->
+<?php 
+    include_once './database/connect.php';
+?>
 <?php
     if(isset($_GET['tat-ca-san-pham'])){
         $title = "Tất cả sản phẩm";
@@ -7,7 +10,13 @@
         $title = "Danh mục";
     }
     else if(isset($_GET['sanpham'])){
-        $title = "Sản phẩm";
+        if(isset($_GET['sanpham'])){
+            $Id = $_GET['sanpham'];
+        }
+        $query = "SELECT * FROM tbl_product WHERE productId = '$Id'";
+        $result = mysqli_query($connect, $query);
+        $product = mysqli_fetch_array($result);
+        $title =  $product['productName'];
     }
     else if(isset($_GET['giohang'])){
         $title = "Giỏ hàng";
@@ -87,8 +96,17 @@
     else if(isset($_GET['tim-kiem'])){
         include './inc/search.php';
     }
-    else{
+    else if(isset($_GET['trang-chu'])){
         include './inc/home.php';
+    }
+    else if(isset($_GET['404'])){
+        include './inc/404.php';
+    }
+    else if(!isset($_GET[''])){
+        include './inc/home.php';
+    }
+    else{
+        include './inc/404.php';
     }
 ?>
 </div>

@@ -24,7 +24,6 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <?php
                     include './inc/navbar.php';
@@ -48,8 +47,6 @@
                             }
                         }
                     }
-                ?>
-                <?php
                 ?>
                 <div class="card shadow mb-4">
                     <div class="card-body">

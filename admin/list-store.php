@@ -55,7 +55,6 @@ if(isset($_GET['delId'])){
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <?php
                                         $query = "SELECT * FROM tbl_store ORDER BY storeId DESC";
                                         $result = mysqli_query($connect, $query);

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once './database/connect.php';
+    // include_once './database/connect.php';
     $UrlRequest = $_SERVER['QUERY_STRING'];
     $getUrl = explode('&', $UrlRequest) ;
     $url = reset($getUrl);

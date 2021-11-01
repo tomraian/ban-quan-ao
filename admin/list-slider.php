@@ -56,7 +56,6 @@ if(isset($_GET['delId'])){
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <?php
                                         $query = "SELECT * FROM tbl_slider ORDER BY sliderId DESC";
                                         $result = mysqli_query($connect, $query);

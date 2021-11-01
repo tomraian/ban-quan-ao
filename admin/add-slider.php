@@ -29,7 +29,6 @@
                     if(isset($_POST['add'])){
                         $sliderName = $_POST['sliderName'];
                         $sliderDesc = $_POST['sliderDesc'];
-                        
                         $permitted = array('jpg', 'jpeg', 'png' , 'gif');
                         $file_name = $_FILES['sliderImage'] ['name'];
                         // dùng để lấy ra tên file upload 

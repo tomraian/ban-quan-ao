@@ -35,35 +35,50 @@
 
                 <div class="card shadow mb-4">
                     <?php
-                    if(isset($_POST['edit-info'])){
-                        $adminName = $_POST['adminName'];
-                        // $adminPassword = $_POST['adminPassword'];
-                        // $adminPasswordAgain = $_POST['adminPasswordAgain'];
-                        // $adminPasswordEncode = md5($adminPassword);
-                        if(empty($adminName)){
-                            $message = '<p class="error-message">Vui lòng nhập tên quản trị viên</p>';
+                        if(isset($_POST['edit-info'])){
+                            $adminName = $_POST['adminName'];
+                            if(empty($adminName)){
+                                $message = '<p class="error-message">Vui lòng nhập tên quản trị viên</p>';
+                            }
+                            else if(strlen($adminName) < 3){
+                                $message = '<p class="error-message">Tên quản trị viên phải từ 2 ký tự trở lên</p>';
+                            }
+                            else if(strlen($adminName) > 26){
+                                $message = '<p class="error-message">Tên quản trị viên phải ít hơn 25 ký tự</p>';
+                            }
+                            else{
+                                    $query = "UPDATE tbl_admin SET  adminName = '$adminName' WHERE adminId = '$adminId'";
+                                    $result = mysqli_query($connect, $query);
+                                    if($result){
+                                        echo "<script>window.location = 'account.php' </script>";
+                                    }
+                                }
                         }
-                        else if(strlen($adminName) < 3){
-                            $message = '<p class="error-message">Tên quản trị viên phải từ 2 ký tự trở lên</p>';
-                        }
-                        else if(strlen($adminName) > 26){
-                            $message = '<p class="error-message">Tên quản trị viên phải ít hơn 25 ký tự</p>';
-                        }
-                        // else if(empty($adminPassword)){
-                        //     $message = '<p class="error-message">Vui lòng nhập mật khẩu</p>';
-                        // }
-                        // else if($adminPassword != $adminPasswordAgain){
-                        //     $message = '<p class="error-message">Mật khẩu nhập lại không đúng</p>';
-                        // }
-                        else{
-                                $query = "UPDATE tbl_admin SET  adminName = '$adminName' WHERE adminId = '$adminId'";
+                    ?>
+                    <?php 
+                        if(isset($_POST['edit-pass'])){
+                            $adminPassword = $_POST['adminPassword'];
+                            $adminPasswordAgain = $_POST['adminPasswordAgain'];
+                            if(empty($adminPassword)){
+                                $message = '<p class="error-message">Vui lòng nhập mật khẩu</p>';
+                            }
+                            if(empty($adminPasswordAgain)){
+                                $message = '<p class="error-message">Mật khẩu nhập lại không được để trống</p>';
+                            }
+                            else if($adminPassword != $adminPasswordAgain){
+                                $message = '<p class="error-message">Mật khẩu nhập lại không đúng</p>';
+                            }
+                            else{
+                                $adminPasswordEncode = md5($adminPassword);
+                                $query = "UPDATE tbl_admin SET  adminPassword = '$adminPasswordEncode' WHERE adminId = '$adminId'";
                                 $result = mysqli_query($connect, $query);
                                 if($result){
-                                    echo "<script>window.location = 'account.php' </script>";
+                                    session_destroy();
+                                    echo "<script>window.location = 'index.php' </script>";
                                 }
                             }
-                    }
-                ?>
+                        }
+                    ?>
                     <div class="card-body">
                         <div class="table-responsive">
                             <?php
@@ -101,34 +116,9 @@
                 </div>
 
                 <div class="card shadow mb-4">
-                    <?php 
-                     if(isset($_POST['edit-pass'])){
-                        $adminPassword = $_POST['adminPassword'];
-                        $adminPasswordAgain = $_POST['adminPasswordAgain'];
-                        if(empty($adminPassword)){
-                            $message = '<p class="error-message">Vui lòng nhập mật khẩu</p>';
-                        }
-                        else if($adminPassword != $adminPasswordAgain){
-                            $message = '<p class="error-message">Mật khẩu nhập lại không đúng</p>';
-                        }
-                        else{
-                            $adminPasswordEncode = md5($adminPassword);
-                            $query = "UPDATE tbl_admin SET  adminPassword = '$adminPasswordEncode' WHERE adminId = '$adminId'";
-                            $result = mysqli_query($connect, $query);
-                            if($result){
-                                session_destroy();
-                                echo "<script>window.location = 'index.php' </script>";
-                            }
-                        }
-                    }
-                    ?>
+
                     <div class="card-body">
                         <div class="table-responsive">
-                            <?php
-                            if(isset($message)){
-                                echo $message;
-                            }
-                            ?>
                             <form action="" method="POST">
                                 <div class="form-group">
                                     <label for="adminPassword">Nhập mật khẩu</label>

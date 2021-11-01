@@ -58,11 +58,14 @@
                 ?>
         <div class="special_product_inner mb-20">
             <div class="special_p_thumb">
-                <a href="single-product.html"><img src="./uploads/<?php echo $productFeatured['productImage'] ?>"
-                        alt=""></a>
+                <a
+                    href="?sanpham=<?php echo $productFeatured['productId'] ?>/<?php echo $productFeatured['productLink'] ?>"><img
+                        src="./uploads/<?php echo $productFeatured['productImage'] ?>" alt=""></a>
             </div>
             <div class="small_p_desc">
-                <h3><a href="single-product.html"><?php echo $productFeatured['productName'] ?></a></h3>
+                <h3><a
+                        href="?sanpham=<?php echo $productFeatured['productId'] ?>/<?php echo $productFeatured['productLink'] ?>"><?php echo $productFeatured['productName']?></a>
+                </h3>
                 <div class="special_product_proce">
                     <?php
                             if($productFeatured["productDiscount"] < 1000){

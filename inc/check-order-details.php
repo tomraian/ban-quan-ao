@@ -17,7 +17,7 @@
                         <?php
                                 if(isset($_GET['don-hang']))
                                 {
-                                    $orderCode = $_GET['don-hang'];
+                                $orderCode = $_GET['don-hang'];
                                 $query = "SELECT 
                                 tbl_order.*,
                                 tbl_cart.*,
@@ -70,19 +70,21 @@
                                 }
                             }
                             ?>
-
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="100">Phí vận chuyển: 30,000 VNĐ </td>
+                            <td colspan="100">Phí vận chuyển: 30,000 VNĐ
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="100">Tổng thu:
                                 <?php  
-                                            $maxTotal = number_format($total + 30000, 0, "", ",")." VNĐ" ;
-                                            echo $maxTotal;
-                                    ?> </td>
+                                    $maxTotal = number_format($total + 30000, 0, "", ",")." VNĐ" ;
+                                    echo $maxTotal;
+                                ?>
+                            </td>
                         </tr>
+
                     </tfoot>
                 </table>
 

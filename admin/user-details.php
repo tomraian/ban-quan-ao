@@ -1,5 +1,5 @@
 <?php
-    $title = 'Danh sách người dùng';
+    $title = 'Chi tiết người dùng';
     include './inc/header.php';
 ?>
 <?php
@@ -129,7 +129,10 @@
                                             while($order = mysqli_fetch_array($result)){
                                     ?>
                                     <tr>
-                                        <td><?php echo $order['orderCode'] ?></td>
+                                        <td>
+                                            <a
+                                                href="order-details.php?code=<?php echo $order['orderCode'] ?>"><?php echo $order['orderCode'] ?></a>
+                                        </td>
                                         <td><?php echo date("d/m/Y H:i:s", strtotime($order['orderTime'])) ?></td>
                                         <td>
                                             <?php

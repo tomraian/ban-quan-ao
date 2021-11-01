@@ -35,13 +35,12 @@
                         else if(strlen($storeName) < 3){
                             $message = '<p class="error-message">Tên địa chỉ cửa hàng phải từ 2 ký tự trở lên</p>';
                         }
-                        if(empty($storeAddress)){
+                        else if(empty($storeAddress)){
                             $message = '<p class="error-message">Vui lòng nhập địa chỉ cửa hàng</p>';
                         }
                         else if(strlen($storeAddress) < 3){
                             $message = '<p class="error-message">Địa chỉ cửa hàng phải từ 2 ký tự trở lên</p>';
                         }
-
                         else{
                             $query = "INSERT INTO tbl_store (storeName,storeAddress) VALUES ('$storeName','$storeAddress')";
                             $result = mysqli_query($connect, $query);
