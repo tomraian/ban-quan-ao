@@ -1,73 +1,64 @@
 ﻿<?php
     if(isset($_POST['thanhtoan'])){
         $customerName = $_POST['customerName'];
-        $customerPhone = $_POST['customerPhone'];
         $customerEmail = $_POST['customerEmail'];
+        $customerPhone = $_POST['customerPhone'];
         $customerAddress = $_POST['customerAddress'];
         $customerNote = $_POST['customerNote'];
-        $customerPayment = $_POST['customerPayment'];
-        $query_customer = "INSERT INTO tbl_customer( customerName, customerPhone, customerAddress, customerEmail, customerNote, customerPayment) 
-                VALUES ('$customerName','$customerPhone','$customerAddress','$customerEmail','$customerNote','$customerPayment')";
-        $result_customer = mysqli_query($connect, $query_customer);
-        if($result){
-            $query_select = "SELECT * FROM tbl_customer ORDER BY customerId DESC LIMIT 1";
-            $result_select = mysqli_query($connect,$query_select);
-            $customerId = mysqli_fetch_array($result_select)['customerId'];
-            $query_select = "SELECT  tbl_cart.*, tbl_product.* FROM tbl_product INNER JOIN tbl_cart ON tbl_product.productId = tbl_cart.productId WHERE cartStatus = 1";
-            $result_select = mysqli_query($connect,$query_select);
-            while($kq = mysqli_fetch_array($result_select)){
-                $cartId[] = $kq['cartId'];
-            }
-            $orderCode = "DH".rand(10000000,99999999);
-            if(isset($_SESSION['dangnhap'])){
-                $userId = $_SESSION['dangnhap'];
-            }
-            else{
-                $userId = 0;
-            }
-            // $getCartStatus = mysqli_query($connect,"SELECT cartId,cartStatus FROM tbl_cart WHERE cartStatus = 1");
-            for($i = 0 ; $i < mysqli_num_rows($result_select) ; $i++){
-                $kq = $cartId[$i];
-                $query_order = "INSERT INTO tbl_order(cartId,orderCode,customerId,orderStatus,userId) VALUES('$kq','$orderCode','$customerId','received','$userId')";
-                $result_order = mysqli_query($connect, $query_order);
-                $query_hide = "UPDATE tbl_cart SET cartStatus = 0 WHERE cartId = '$kq'";
-                $result_hide = mysqli_query($connect,$query_hide);
-                if(isset($result_order)){
-                    $query = "SELECT * FROM tbl_order ORDER BY orderId DESC LIMIT 1";
-                    $result = mysqli_query($connect,$query); 
-                    $orderCode = mysqli_fetch_array($result)['orderCode'];
-                   echo "<script>window.location = '?hoan-tat-thanh-toan&don-hang=$orderCode'</script>";
+        $customerPayment = @$_POST['customerPayment'];
+        if(!$customerName){
+            $error = '<p class="error-message">Họ tên không được để trống</p>';
+        }
+        else if(!$customerEmail){
+            $error = '<p class="error-message">Email không được để trống</p>';
+        }
+        else if(!$customerPhone){
+            $error = '<p class="error-message">Số điện thoại không được để trống</p>';
+        }
+        else if(!$customerAddress){
+            $error = '<p class="error-message">Địa chỉ giao hàng không được để trống</p>';
+        }
+        else if(!$customerPayment){
+            $error = '<p class="error-message">Phương thức thanh toán không được để trống</p>';
+        }
+        else{
+            $query_customer = "INSERT INTO tbl_customer( customerName, customerPhone, customerAddress, customerEmail, customerNote, customerPayment) 
+            VALUES ('$customerName','$customerPhone','$customerAddress','$customerEmail','$customerNote','$customerPayment')";
+            echo $query_customer;
+            $result_customer = mysqli_query($connect, $query_customer);
+            if($result_customer){
+                $query_select = "SELECT * FROM tbl_customer ORDER BY customerId DESC LIMIT 1";
+                $result_select = mysqli_query($connect,$query_select);
+                $customerId = mysqli_fetch_array($result_select)['customerId'];
+                $query_select = "SELECT  tbl_cart.*, tbl_product.* FROM tbl_product INNER JOIN tbl_cart ON tbl_product.productId = tbl_cart.productId WHERE cartStatus = 1";
+                $result_select = mysqli_query($connect,$query_select);
+                while($kq = mysqli_fetch_array($result_select)){
+                    $cartId[] = $kq['cartId'];
+                }
+                $orderCode = "DH".rand(10000000,99999999);
+                if(isset($_SESSION['dangnhap'])){
+                    $userId = $_SESSION['dangnhap'];
+                }
+                else{
+                    $userId = 0;
+                }
+                // $getCartStatus = mysqli_query($connect,"SELECT cartId,cartStatus FROM tbl_cart WHERE cartStatus = 1");
+                for($i = 0 ; $i < mysqli_num_rows($result_select) ; $i++){
+                    $kq = $cartId[$i];
+                    $query_order = "INSERT INTO tbl_order(cartId,orderCode,customerId,orderStatus,userId) VALUES('$kq','$orderCode','$customerId','received','$userId')";
+                    $result_order = mysqli_query($connect, $query_order);
+                    $query_hide = "UPDATE tbl_cart SET cartStatus = 0 WHERE cartId = '$kq'";
+                    $result_hide = mysqli_query($connect,$query_hide);
+                    if(isset($result_order)){
+                        $query = "SELECT * FROM tbl_order ORDER BY orderId DESC LIMIT 1";
+                        $result = mysqli_query($connect,$query); 
+                        $orderCode = mysqli_fetch_array($result)['orderCode'];
+                       echo "<script>window.location = '?hoan-tat-thanh-toan&don-hang=$orderCode'</script>";
+                    }
                 }
             }
         }
-    }
-    else if(isset($_POST['dang-nhap']) && $_SERVER["REQUEST_METHOD"] === 'POST')
-    {
-        $userEmail = $_POST['userEmail'];
-        $userPassword = md5($_POST['userPassword']);
-    
-        if(!$userEmail){
-            $error = '<p class="error-message">Tài khoản không được để trống</p>';
-        }
-        else if(!$userPassword){
-            $error = '<p class="error-message">Mật khẩu không được để trống</p>';
-        }
-        else{
-            $query = "SELECT * FROM tbl_user WHERE userEmail = '$userEmail' AND userPassword = '$userPassword'";
-            $result = mysqli_query($connect, $query);
-            $row_dangnhap = mysqli_fetch_array($result);
-            if(mysqli_num_rows($result) > 0){
-                $_SESSION['dangnhap'] = $row_dangnhap['userId'];
-                $_SESSION['userName'] = $row_dangnhap['userName'];
-                $_SESSION['userEmail'] = $row_dangnhap['userEmail'];
-                $_SESSION['userAddress'] = $row_dangnhap['userAddress'];
-                $_SESSION['userPhone'] = $row_dangnhap['userPhone'];
-                // echo '<script>window.location = "index.php" </script>';
-            }
-            else{
-                $error = '<p class="error-message">Tài khoản hoặc mật khẩu sai</p>';
-            }
-        }
+        
     }
 ?>
 <!--breadcrumbs area start-->
@@ -104,8 +95,14 @@
                     <h3>Địa chỉ giao hàng</h3>
                     <div class="row">
                         <div class="col-lg-12 mb-30">
+                            <?php 
+                    if(isset($error))
+                    {
+                        echo $error;
+                    }
+                ?>
                             <label>Họ và tên<span>*</span></label>
-                            <input type="text" name="customerName" placeholder="Tên của bạn" required value="<?php
+                            <input type="text" name="customerName" placeholder="Tên của bạn" value="<?php
                                     if(isset($_SESSION['dangnhap'])){
                                         echo $_SESSION['userName'];
                                     }
@@ -113,8 +110,7 @@
                         </div>
                         <div class="col-12 mb-30">
                             <label>Địa chỉ email</label>
-                            <input type="email" required
-                                placeholder="Địa chỉ email để nhận email xác nhận thông tin đơn hàng"
+                            <input type="email" placeholder="Địa chỉ email để nhận email xác nhận thông tin đơn hàng"
                                 name="customerEmail" value="<?php
                                     if(isset($_SESSION['dangnhap'])){
                                         echo $_SESSION['userEmail'];
@@ -124,7 +120,7 @@
                         <div class="col-12 mb-30">
                             <label>Số điện thoại</label>
                             <input type="number" class="input-arrow-remove" placeholder="Số điện thoại liên hệ"
-                                name="customerPhone" required value="<?php
+                                name="customerPhone" value="<?php
                                     if(isset($_SESSION['dangnhap'])){
                                         echo $_SESSION['userPhone'];
                                     }
@@ -132,8 +128,7 @@
                         </div>
                         <div class="col-12 mb-30">
                             <label>Địa chỉ giao hàng<span>*</span></label>
-                            <input type="text" placeholder="Số nhà,quận/huyện,thành phố" name="customerAddress" required
-                                value="<?php
+                            <input type="text" placeholder="Số nhà,quận/huyện,thành phố" name="customerAddress" value="<?php
                                     if(isset($_SESSION['dangnhap'])){
                                         echo $_SESSION['userAddress'];
                                     }
